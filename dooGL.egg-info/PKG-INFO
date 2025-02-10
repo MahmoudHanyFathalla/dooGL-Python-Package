@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: dooGL
+Version: 0.2.1
+Requires-Python: >=3.6
+Requires-Dist: PyOpenGL
+Requires-Dist: PyOpenGL_accelerate
+Requires-Dist: pygame
+Requires-Dist: Pillow

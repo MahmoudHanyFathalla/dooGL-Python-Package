@@ -1,0 +1,204 @@
+# DoGL (Drawing OpenGL) 🎨
+
+## Overview
+
+DoGL is a powerful, flexible 2D graphics library built on Pygame and OpenGL, designed to simplify the process of creating interactive and visually appealing 2D graphics, visualizations, and simple games. With an intuitive API and extensive customization options, DoGL makes graphic programming accessible and enjoyable.
+
+## 🌟 Features
+
+### Comprehensive Shape Drawing
+- Draw a wide variety of shapes with unprecedented control:
+  - Circles
+  - Squares
+  - Triangles
+  - Polygons
+  - Stars
+  - Hearts
+  - Lines
+  - Arcs
+  - Bézier Curves
+  - Ellipses
+
+### Advanced Customization
+- Rotation support for all shapes
+- Fill or outline rendering
+- Custom color selection
+- Texture mapping
+- Partial shape rendering (e.g., quarter circles, specific polygon sections)
+
+### Interactive Controls
+- Keyboard-driven movement
+- Boundary constraints
+- Custom key mapping
+
+### Rendering Utilities
+- Grid scaling
+- Text rendering
+- Background image support
+- Coordinate system helpers
+
+## 🚀 Installation
+
+### Prerequisites
+- Python 3.7+
+- Pygame
+- PyOpenGL
+- Pillow (PIL)
+
+### Install via pip
+```bash
+pip install dogl
+```
+
+### Manual Installation
+```bash
+git clone https://github.com/yourusername/dogl.git
+cd dogl
+pip install -r requirements.txt
+```
+
+## 📘 Quick Start Guide
+
+### Basic Window Initialization
+```python
+from dogl import init_window, magic, end, scale
+
+# Initialize a window
+init_window(800, 600)
+
+# Main rendering loop
+running = True
+while running:
+    running = magic()
+    
+    # Add your drawing code here
+    scale()  # Optional: draw coordinate grid
+    
+    end()  # Swap buffers
+```
+
+### Drawing Shapes
+
+#### Circle
+```python
+from dogl import circle
+
+# Basic circle
+circle(center=(400, 300), radius=100, color=(1.0, 0.0, 0.0))
+
+# Partial circle with rotation
+circle(
+    center=(400, 300), 
+    radius=200, 
+    section="top_left", 
+    rotation=45, 
+    fill=False
+)
+```
+
+#### Square with Texture
+```python
+from dogl import square
+
+square(
+    center=(400, 300), 
+    size=150, 
+    rotation=30, 
+    image="background.png"
+)
+```
+
+#### Interactive Movement
+```python
+from dogl import move, heart
+
+# Movable heart shape
+position = (400, 300)
+while running:
+    position = move(position)
+    heart(center=position, size=20)
+```
+
+## 🔧 Advanced Usage
+
+### Custom Polygon
+```python
+from dogl import polygon
+
+# 8-sided polygon with custom color
+polygon(
+    center=(400, 300), 
+    sides=8, 
+    radius=200, 
+    color=(0, 1, 0), 
+    rotation=40, 
+    fill=False
+)
+```
+
+### Bézier Curve
+```python
+from dogl import bezier_curve
+
+control_points = [
+    (100, 100), 
+    (200, 300), 
+    (400, 300)
+]
+bezier_curve(
+    control_points=control_points, 
+    color=(1, 0, 0)
+)
+```
+
+## 🎨 Color and Texture
+
+- Colors are specified as RGB tuples (0.0 - 1.0)
+- Supports both solid colors and image textures
+- Rotation and transformation options for all shapes
+
+## 🕹️ Input Controls
+
+- Keyboard movement with custom key mappings
+- Boundary constraint options
+- Easy integration with game-like interactions
+
+## 📦 Modules
+
+- `init`: Window and display management
+- `helper`: Utility functions
+- `control`: Input handling
+- Shape modules: Circle, Square, Triangle, etc.
+
+## 🔬 Performance Considerations
+
+- Built on OpenGL for hardware-accelerated rendering
+- Lightweight and minimal dependencies
+- Suitable for educational projects, data visualization, and simple games
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📜 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## 🙌 Acknowledgments
+
+- Pygame Community
+- OpenGL Developers
+- Python Graphics Enthusiasts
+
+## 📞 Contact
+
+Project Link: [https://github.com/yourusername/dogl]
+Created by: Mahmoud Hany Fathalla
+
+---
+
+**Happy Coding! 🖌️👩‍💻👨‍💻**

@@ -1,0 +1,175 @@
+import pygame
+from pygame.locals import *
+from OpenGL.GL import *
+from OpenGL.GLU import *
+import os
+def d3_init_window(width=800, height=600, depth=1000.0, icon=None, text="DoGL Window"):
+    """
+    Initialize the Pygame window with the given parameters for 3D perspective.
+    Parameters:
+    width (int): Width of the window (default 800)
+    height (int): Height of the window (default 600)
+    depth (float): Depth for perspective view (default 1000.0)
+    icon (str): Path to the window icon image (default None)
+    text (str): Title of the window (default "DoGL Window")
+    """
+    pygame.init()
+    display = (width, height)
+    pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
+    
+    # Set up perspective projection
+    glMatrixMode(GL_PROJECTION)
+    glLoadIdentity()
+    gluPerspective(45, (width / height), 0.1, depth)  # Perspective view with a field of view of 45 degrees
+    
+    # Set up the camera position using gluLookAt for an angled view
+    glMatrixMode(GL_MODELVIEW)
+    glLoadIdentity()
+    
+    # Change the camera position to a more diagonal angle to view all axes
+    gluLookAt(300, 300, 300,   # Camera position (X, Y, Z)
+              0, 0, 0,         # Look at the origin (0, 0, 0)
+              0, 1, 0)         # Up vector (Y-axis is up)
+
+    if icon is None:
+        icon = "doGl_logo.png"
+
+    # Set window title and icon
+    pygame.display.set_caption(text)
+    try:
+        icon = pygame.image.load(icon)
+        pygame.display.set_icon(icon)
+    except FileNotFoundError:
+        print(f"Icon file '{icon}' not found. Using default icon.")
+
+def draw_axes(depth=500.0):
+    """
+    Draws the X, Y, and Z axes in the 3D space. The Z-axis extends from negative to positive values.
+    
+    Parameters:
+    depth (float): Length of the Z-axis.
+    """
+    width, height = pygame.display.get_surface().get_size()
+    
+    glEnable(GL_LINE_SMOOTH)
+    
+    glBegin(GL_LINES)
+    
+    # X-axis (Yellow)
+    glColor3f(1.0, 1.0, 0.0)
+    glVertex3f(-width, 0, 0)
+    glVertex3f(width, 0, 0)
+    
+    # Y-axis (Red)
+    glColor3f(1.0, 0.0, 0.0)
+    glVertex3f(0, -height, 0)
+    glVertex3f(0, height, 0)
+    
+    # Z-axis (Blue, extended from -depth to +depth)
+    glColor3f(0.0, 0.0, 1.0)
+    glVertex3f(0, 0, -depth)  # Negative Z
+    glVertex3f(0, 0, depth)   # Positive Z
+    
+    glEnd()
+
+    glDisable(GL_LINE_SMOOTH)
+
+# Function to handle events like mouse clicks
+def magic(mouse_position=False):
+    """
+    Event handling function to capture user input and manage the OpenGL window.
+    
+    Parameters:
+    mouse_position (bool): If True, prints the x and y coordinates of the mouse click. Default is False.
+    
+    Returns:
+    bool: False if the window is closed, True otherwise.
+    """
+    running = True
+    width, height = pygame.display.get_surface().get_size()
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False  # Exit the loop and close the window
+        elif event.type == pygame.MOUSEBUTTONDOWN and mouse_position:  # Detect mouse click
+            x, y = event.pos  # Get x and y coordinates of the mouse click
+            y = height - y  # Invert y-coordinate to start from the bottom-left
+            print(f"Mouse clicked at: x={x}, y={y}")
+    
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)  # Clear the screen after handling events
+    return running  # Return the running state (True to continue, False to exit)
+
+# Function to draw background image
+def d3_background(image_path=None, img_width=10.0, img_height=7.5, x=0.0, y=0.0, z=-10.0):
+    """
+    Renders a background image as a textured quad in 3D space at the specified center location.
+    
+    Parameters:
+    image_path (str): The path to the background image. Defaults to 'doGl_logo.png' if not provided.
+    img_width (float): The width of the image quad (default 10.0).
+    img_height (float): The height of the image quad (default 7.5).
+    x (float): The x-coordinate of the image's center position (default 0.0).
+    y (float): The y-coordinate of the image's center position (default 0.0).
+    z (float): The z-coordinate of the image's center position (default -10.0).
+    """
+    # Set default image if no image path is provided
+    default_image = "doGl_logo.png"
+    
+    if image_path is None:
+        image_path = os.path.join(os.path.dirname(__file__), default_image)
+    else:
+        image_path = os.path.join(os.path.dirname(__file__), image_path)
+    
+    # Load the image
+    try:
+        background_image = pygame.image.load(image_path)
+    except FileNotFoundError:
+        print(f"Background image '{image_path}' not found.")
+        return
+    
+    # Convert the image to a string format that OpenGL can use
+    image_data = pygame.image.tostring(background_image, "RGB", True)
+    image_width, image_height = background_image.get_size()
+    
+    # Enable texture mapping
+    glEnable(GL_TEXTURE_2D)
+    texture = glGenTextures(1)
+    glBindTexture(GL_TEXTURE_2D, texture)
+    
+    # Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
+    
+    # Load the texture data
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image_width, image_height, 0, GL_RGB, GL_UNSIGNED_BYTE, image_data)
+    
+    # Set color to white to prevent the background image from being tinted
+    glColor3f(1.0, 1.0, 1.0)
+    
+    # Calculate the corners of the quad based on the center position (x, y, z) and the specified width and height
+    half_width = img_width / 2.0
+    half_height = img_height / 2.0
+    
+    # Draw the background as a textured quad at the specified location
+    glBegin(GL_QUADS)
+    glTexCoord2f(0, 0); glVertex3f(x - half_width, y - half_height, z)  # Bottom-left of the quad
+    glTexCoord2f(1, 0); glVertex3f(x + half_width, y - half_height, z)  # Bottom-right of the quad
+    glTexCoord2f(1, 1); glVertex3f(x + half_width, y + half_height, z)  # Top-right of the quad
+    glTexCoord2f(0, 1); glVertex3f(x - half_width, y + half_height, z)  # Top-left of the quad
+    glEnd()
+    
+    glDisable(GL_TEXTURE_2D)  # Disable texture mapping after drawing the background
+
+if __name__ == "__main__":
+    d3_init_window(width=800, height=600, depth=1000.0, text="DoGL")
+    
+    running = True
+    while running:
+        running = magic(mouse_position=True)  # Call the magic function with mouse detection enabled
+        d3_background( img_width=400, img_height=300, x=0.0, y=-300.0, z=-225.0)
+        draw_axes(500)  # Now we should see the Z-axis properly
+       
+        
+        pygame.display.flip()
