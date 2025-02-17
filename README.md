@@ -1,204 +1,79 @@
-# DoGL (Drawing OpenGL) 🎨
+# DooGL - 2D & 3D Graphics Library
 
 ## Overview
 
-DoGL is a powerful, flexible 2D graphics library built on Pygame and OpenGL, designed to simplify the process of creating interactive and visually appealing 2D graphics, visualizations, and simple games. With an intuitive API and extensive customization options, DoGL makes graphic programming accessible and enjoyable.
+**DooGL** is a Python-based graphics library designed for rendering **2D and 3D objects** using OpenGL and Pygame. It provides an easy-to-use API for drawing and manipulating geometric shapes, integrating textures, handling interactive movements, and setting up custom camera controls. Ideal for **game development, simulations, and data visualization**, DooGL simplifies graphics programming while offering extensive customization options.
 
-## 🌟 Features
+---
+## Features
 
-### Comprehensive Shape Drawing
-- Draw a wide variety of shapes with unprecedented control:
-  - Circles
-  - Squares
-  - Triangles
-  - Polygons
-  - Stars
-  - Hearts
-  - Lines
-  - Arcs
-  - Bézier Curves
-  - Ellipses
+### 2D Functions
+DooGL includes a wide range of 2D drawing functions for rendering shapes, text, and backgrounds with rotation, colors, and texture support.
 
-### Advanced Customization
-- Rotation support for all shapes
-- Fill or outline rendering
-- Custom color selection
-- Texture mapping
-- Partial shape rendering (e.g., quarter circles, specific polygon sections)
+#### **Basic Shapes**
+- **Arc**: Draws an arc with customizable center, radius, angles, and rotation.
+- **Bezier Curve**: Renders a smooth curve using control points.
+- **Circle**: Creates a filled or outlined circle with optional texture.
+- **Ellipse**: Draws an ellipse with adjustable radii, rotation, and optional texture.
+- **Heart**: Generates a heart shape with customizable size and fill options.
+- **Line**: Draws a straight or dashed line between two points.
+- **Polygon**: Creates multi-sided polygons with optional texture.
+- **Square**: Renders a square with customizable size, rotation, and texture.
+- **Star**: Generates a star with a specified number of points.
+- **Triangle**: Draws an equilateral triangle with rotation and texture options.
+- **Shape**: For making and creating your own shapes.
 
-### Interactive Controls
-- Keyboard-driven movement
-- Boundary constraints
-- Custom key mapping
+#### **Text and Background**
+- **Text**: Displays text with customizable font, color, background, size, and rotation.
+- **Background**: Sets an image as the background for the rendering window.
 
-### Rendering Utilities
-- Grid scaling
-- Text rendering
-- Background image support
-- Coordinate system helpers
-
-## 🚀 Installation
-
-### Prerequisites
-- Python 3.7+
-- Pygame
-- PyOpenGL
-- Pillow (PIL)
-
-### Install via pip
-```bash
-pip install dogl
-```
-
-### Manual Installation
-```bash
-git clone https://github.com/yourusername/dogl.git
-cd dogl
-pip install -r requirements.txt
-```
-
-## 📘 Quick Start Guide
-
-### Basic Window Initialization
-```python
-from dogl import init_window, magic, end, scale
-
-# Initialize a window
-init_window(800, 600)
-
-# Main rendering loop
-running = True
-while running:
-    running = magic()
-    
-    # Add your drawing code here
-    scale()  # Optional: draw coordinate grid
-    
-    end()  # Swap buffers
-```
-
-### Drawing Shapes
-
-#### Circle
-```python
-from dogl import circle
-
-# Basic circle
-circle(center=(400, 300), radius=100, color=(1.0, 0.0, 0.0))
-
-# Partial circle with rotation
-circle(
-    center=(400, 300), 
-    radius=200, 
-    section="top_left", 
-    rotation=45, 
-    fill=False
-)
-```
-
-#### Square with Texture
-```python
-from dogl import square
-
-square(
-    center=(400, 300), 
-    size=150, 
-    rotation=30, 
-    image="background.png"
-)
-```
-
-#### Interactive Movement
-```python
-from dogl import move, heart
-
-# Movable heart shape
-position = (400, 300)
-while running:
-    position = move(position)
-    heart(center=position, size=20)
-```
-
-## 🔧 Advanced Usage
-
-### Custom Polygon
-```python
-from dogl import polygon
-
-# 8-sided polygon with custom color
-polygon(
-    center=(400, 300), 
-    sides=8, 
-    radius=200, 
-    color=(0, 1, 0), 
-    rotation=40, 
-    fill=False
-)
-```
-
-### Bézier Curve
-```python
-from dogl import bezier_curve
-
-control_points = [
-    (100, 100), 
-    (200, 300), 
-    (400, 300)
-]
-bezier_curve(
-    control_points=control_points, 
-    color=(1, 0, 0)
-)
-```
-
-## 🎨 Color and Texture
-
-- Colors are specified as RGB tuples (0.0 - 1.0)
-- Supports both solid colors and image textures
-- Rotation and transformation options for all shapes
-
-## 🕹️ Input Controls
-
-- Keyboard movement with custom key mappings
-- Boundary constraint options
-- Easy integration with game-like interactions
-
-## 📦 Modules
-
-- `init`: Window and display management
-- `helper`: Utility functions
-- `control`: Input handling
-- Shape modules: Circle, Square, Triangle, etc.
-
-## 🔬 Performance Considerations
-
-- Built on OpenGL for hardware-accelerated rendering
-- Lightweight and minimal dependencies
-- Suitable for educational projects, data visualization, and simple games
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📜 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-## 🙌 Acknowledgments
-
-- Pygame Community
-- OpenGL Developers
-- Python Graphics Enthusiasts
-
-## 📞 Contact
-
-Project Link: [https://github.com/yourusername/dogl]
-Created by: Mahmoud Hany Fathalla
+#### **Interactive Features**
+- **Move**: Enables object movement using keyboard controls with boundary checking.
+- **Magic**: Captures mouse clicks and prints their positions for interaction handling.
+- **Scale**: Draws a coordinate grid with adjustable spacing and labeled axes.
 
 ---
 
-**Happy Coding! 🖌️👩‍💻👨‍💻**
+### 3D Functions
+DooGL offers advanced 3D rendering capabilities, including shape drawing, camera control, and object transformations.
+
+#### **3D Camera & Environment**
+- **d3_camera**: Implements a 3D camera with movement, rotation, and boundary limits.
+- **d3_background**: Sets a background image for the 3D scene.
+- **d3_scale**: Draws a 3D coordinate system with X, Y, and Z axes.
+- **d3_init_window**: Initializes an OpenGL-powered Pygame window with customizable depth and title.
+
+#### **3D Shapes**
+- **d3_cube**: Creates a 3D cube with size, color, and rotation controls.
+- **d3_cylinder**: Generates a cylinder with adjustable height and radius.
+- **d3_diamond**: Draws a diamond-shaped 3D object.
+- **d3_plane**: Renders a flat 3D plane with color and rotation.
+- **d3_prism**: Creates a triangular prism with depth and color options.
+- **d3_pyramid**: Draws a pyramid with customizable base width and height.
+- **d3_sphere**: Generates a sphere with adjustable radius and rotation.
+- **d3_torus**: Creates a torus with customizable ring and tube radius.
+
+#### **3D Interactivity**
+- **d3_move**: Enables keyboard-controlled movement of points in 3D space.
+
+---
+
+## Getting Started
+To use DooGL, ensure you have **Python** installed. Then, integrate DooGL into your project using:
+
+```
+pip install dooGL
+
+```
+---
+
+## Applications
+- **Game Development**: Easily create and manipulate 2D/3D objects for game environments.
+- **Simulations**: Visualize physics-based models and interactive scenarios.
+- **Data Visualization**: Render 3D graphs and charts with ease.
+
+---
+
+## Conclusion
+
+DooGL is a powerful and flexible Python library designed for 2D and 3D graphics rendering using OpenGL and Pygame. It provides an extensive set of functions for creating and manipulating geometric shapes, including arcs, curves, polygons, and complex 3D objects like cubes, spheres, and toruses. With built-in support for transformations, textures, and interactive camera controls, DooGL simplifies graphical programming, making it ideal for game development, simulations, and visualizations. Its intuitive API allows developers to efficiently render high-quality graphics while maintaining full control over colors, rotations, and animations.

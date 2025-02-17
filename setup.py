@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="dooGL",  # The name of your package
-    version="0.2.2",  # Initial version
+    version="0.2.3",  # Initial version
     packages=find_packages(),  # Automatically discover all modules
     python_requires='>=3.6',  # Minimum Python version requirement
     include_package_data=True,  # Automatically include files specified in package_data
@@ -22,4 +22,5 @@ setup(
     ],
      long_description=long_description,  # Use the content of README.md
      long_description_content_type="text/markdown",  # Specify that README is in Markdown format
+     url="https://github.com/MahmoudHanyFathalla/dooGL-Python-Package",
 )

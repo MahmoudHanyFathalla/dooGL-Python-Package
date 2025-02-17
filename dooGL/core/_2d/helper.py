@@ -100,6 +100,7 @@ def load_texture(image_path):
     return texture_id, width, height
 
 def text(position=(0, 0), text="Default Text", font=None, text_color=(1, 1, 0), background_color=(0, 0.25, 0), size=(100, 50), rotation=0):
+    
     """
     Draws 2D text at the given coordinates using Pygame and OpenGL, with an option to rotate the text.
 
