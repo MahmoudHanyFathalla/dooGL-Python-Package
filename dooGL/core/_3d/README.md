@@ -1,7 +1,7 @@
 # 3D functions
 
 
-To use the `d3_camera` function in one line of Python, you can call it like this:  
+#### To use the `d3_camera` function in one line of Python, you can call it like this:  
 
 ```python
 d3_camera(camera_pos=[-495, 495, 495], speed=0.1, rotation=[25, 45, 0], rotation_speed=0.1, move=True, print_position=True, 
@@ -40,7 +40,7 @@ d3_camera(camera_pos=[-495, 495, 495], speed=0.1, rotation=[25, 45, 0], rotation
 
 ---
 
-To use the `d3_cube` function in one line of Python, you can call it like this:  
+#### To use the `d3_cube` function in one line of Python, you can call it like this:  
 
 ```python
 d3_cube(center=(0.0, 0.0, 0.0), size=1.0, rotation=(0.0, 0.0, 0.0), color=(1.0, 1.0, 1.0))
@@ -54,7 +54,7 @@ d3_cube(center=(0.0, 0.0, 0.0), size=1.0, rotation=(0.0, 0.0, 0.0), color=(1.0, 
 
 ---
 
-To use the `d3_cylinder` function in one line of Python, you can call it like this:  
+#### To use the `d3_cylinder` function in one line of Python, you can call it like this:  
 
 ```python
 d3_cylinder(center=(0.0, 0.0, 0.0), radius=1.0, height=2.0, rotation=(0.0, 0.0, 0.0), color=(1.0, 1.0, 1.0))
@@ -70,7 +70,7 @@ d3_cylinder(center=(0.0, 0.0, 0.0), radius=1.0, height=2.0, rotation=(0.0, 0.0, 
 
 ---
 
-To use the `d3_diamond` function in one line of Python, you can call it like this:  
+#### To use the `d3_diamond` function in one line of Python, you can call it like this:  
 
 ```python
 d3_diamond(center=(0.0, 0.0, 0.0), base_width=1.0, height=2.0, rotation=(0.0, 0.0, 0.0), color=(1.0, 1.0, 1.0))
@@ -85,7 +85,7 @@ d3_diamond(center=(0.0, 0.0, 0.0), base_width=1.0, height=2.0, rotation=(0.0, 0.
 
 ---
 
-To use the `d3_scale` function in one line of Python, you can call it like this:
+#### To use the `d3_scale` function in one line of Python, you can call it like this:
 
 ```python
 d3_scale(depth=500.0)
@@ -102,7 +102,7 @@ This function draws the X, Y, and Z axes using OpenGL:
 
 ---
 
-To use the `d3_init_window` function in one line of Python, you can call it like this:
+#### To use the `d3_init_window` function in one line of Python, you can call it like this:
 
 ```python
 d3_init_window(width=800, height=600, depth=1000.0, icon="doGl_logo.png", text="DoGL Window")
@@ -117,7 +117,7 @@ d3_init_window(width=800, height=600, depth=1000.0, icon="doGl_logo.png", text="
 
 ---
 
-To use the `d3_background` function in one line of Python, you can call it like this:
+#### To use the `d3_background` function in one line of Python, you can call it like this:
 
 ```python
 d3_background(image_path="background.jpg", img_width=15.0, img_height=10.0, x=0.0, y=0.0, z=-15.0)
@@ -133,7 +133,7 @@ d3_background(image_path="background.jpg", img_width=15.0, img_height=10.0, x=0.
 
 ---
 
-To use the `d3_move` function in one line of Python, you can call it like this:
+#### To use the `d3_move` function in one line of Python, you can call it like this:
 
 ```python
 d3_move(point=(0.0, 0.0, 0.0), speed=0.1, move_forward='w', move_backward='s', move_left='a', move_right='d', move_down='q', move_up='e')
@@ -151,7 +151,7 @@ d3_move(point=(0.0, 0.0, 0.0), speed=0.1, move_forward='w', move_backward='s', m
 
 ---
 
-To use the `d3_plane` function in one line of Python, you can call it like this:
+#### To use the `d3_plane` function in one line of Python, you can call it like this:
 
 ```python
 d3_plane(center=(0.0, 0.0, 0.0), width=1.0, height=1.0, rotation=(0.0, 0.0, 0.0), color=(1.0, 1.0, 1.0))
@@ -166,7 +166,7 @@ d3_plane(center=(0.0, 0.0, 0.0), width=1.0, height=1.0, rotation=(0.0, 0.0, 0.0)
 
 ---
 
-To use the `d3_prism` function in one line of Python, you can call it like this:
+#### To use the `d3_prism` function in one line of Python, you can call it like this:
 
 ```python
 d3_prism(center=(0.0, 0.0, 0.0), base_width=1.0, height=1.0, depth=1.0, rotation=(0.0, 0.0, 0.0), color=(1.0, 1.0, 1.0))
@@ -182,7 +182,7 @@ d3_prism(center=(0.0, 0.0, 0.0), base_width=1.0, height=1.0, depth=1.0, rotation
 
 ---
 
-To use the `d3_pyramid` function in one line of Python, you can call it like this:
+#### To use the `d3_pyramid` function in one line of Python, you can call it like this:
 
 ```python
 d3_pyramid(center=(0.0, 0.0, 0.0), base_width=1.0, height=1.0, rotation=(0.0, 0.0, 0.0), color=(1.0, 1.0, 1.0))
@@ -197,7 +197,7 @@ d3_pyramid(center=(0.0, 0.0, 0.0), base_width=1.0, height=1.0, rotation=(0.0, 0.
 
 ---
 
-To use the `d3_sphere` function in one line of Python, you can call it like this:
+#### To use the `d3_sphere` function in one line of Python, you can call it like this:
 
 ```python
 d3_sphere(center=(0.0, 0.0, 0.0), radius=1.0, rotation=(0.0, 0.0, 0.0), color=(1.0, 1.0, 1.0))
@@ -211,7 +211,7 @@ d3_sphere(center=(0.0, 0.0, 0.0), radius=1.0, rotation=(0.0, 0.0, 0.0), color=(1
 
 ---
 
-To use the `d3_torus` function in one line of Python, you can call it like this:
+#### To use the `d3_torus` function in one line of Python, you can call it like this:
 
 ```python
 d3_torus(center=(0.0, 0.0, 0.0), radius=1.0, tube_radius=0.3, rotation=(0.0, 0.0, 0.0), color=(1.0, 1.0, 1.0))
