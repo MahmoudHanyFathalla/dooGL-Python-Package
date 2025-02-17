@@ -4,7 +4,6 @@
 
 **DooGL** is a Python-based graphics library designed for rendering **2D and 3D objects** using OpenGL and Pygame. It provides an easy-to-use API for drawing and manipulating geometric shapes, integrating textures, handling interactive movements, and setting up custom camera controls. Ideal for **game development, simulations, and data visualization**, DooGL simplifies graphics programming while offering extensive customization options.
 
----
 ## Features
 
 ### 2D Functions
@@ -63,7 +62,6 @@ To use DooGL, ensure you have **Python** installed. Then, integrate DooGL into y
 
 ```
 pip install dooGL
-
 ```
 ---
 
