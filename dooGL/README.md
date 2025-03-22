@@ -296,9 +296,17 @@ d3_move(points=[(0.0, 0.0, 0.0)], speed=0.1, forward='w', backward='s', left='a'
 Here's an example that demonstrates how to use some of the package's features:
 
 ```python
-import dooGL
+from dooGL import *
 
+init_window(800, 600)                          
 
+running = True
+while running:
+    running = magic()
+
+# Add your drawing code here #
+
+    end()
 ```
 
 ## License
