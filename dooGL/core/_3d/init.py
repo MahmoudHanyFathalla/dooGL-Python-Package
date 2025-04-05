@@ -26,7 +26,7 @@ def magic(mouse_position=False):
     return running
 
 
-def d3_init_window(width=800, height=600, depth=1000.0, icon=None, text="DoGL Window"):
+def d3_init_window(width=800, height=600, depth=1000.0, icon="doGl_logo.png", text="DoGL Window"):
     """
     Initialize the Pygame window with the given parameters for 3D perspective.
     """
