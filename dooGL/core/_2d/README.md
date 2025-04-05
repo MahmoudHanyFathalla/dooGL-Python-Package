@@ -103,7 +103,7 @@ polygon(center=(400, 300), sides=6, radius=200, color=(0, 1.0, 0), fill=True, ro
 Draw a square with customizable size, color, and rotation.
 
 ```python
-square(center=(200, 200), size=100, color=(1.0, 0.0, 0.0), fill=True, rotation=45)
+square(center=(200, 200), size=100, color=(1.0, 0.0, 0.0), fill=True, rotation=45,rotate_around="center", image=None)
 ```
 
 - **center**: The center point `(x, y)` of the square.
@@ -132,7 +132,7 @@ star(center=(400, 300), radius=150, points=6, color=(1.0, 0.5, 0.0), fill=False,
 Draw a triangle with customizable size, color, and rotation.
 
 ```python
-triangle(center=(400, 300), size=100, color=(0.0, 1.0, 0.0), fill=True, rotation=30, rotate_around="center")
+triangle(center=(400, 300), size=100, color=(0.0, 1.0, 0.0), fill=True, rotation=30, rotate_around="center", image=None)
 ```
 
 - **center**: The center of the triangle `(x, y)`.
@@ -172,7 +172,7 @@ background(image_path="background_image.png")
 Move points on the screen with keyboard controls.
 
 ```python
-move(points=[(100, 100)], speed=2, up=pygame.K_w, down=pygame.K_s, left=pygame.K_a, right=pygame.K_d, boundaries=True, half_raduis=10, max_x=800, max_y=600)
+move(points=[(100, 100)], speed=2, up=pygame.K_w, down=pygame.K_s, left=pygame.K_a, right=pygame.K_d, boundaries=True, half_raduis=10, max_x=800, max_y=600, min_y=10, min_x=10)
 ```
 
 - **points**: A list of points `[(x1, y1), (x2, y2)]` to move.
