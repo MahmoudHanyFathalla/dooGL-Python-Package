@@ -4,39 +4,41 @@
 #### To use the `d3_camera` function in one line of Python, you can call it like this:  
 
 ```python
-d3_camera(camera_pos=[-495, 495, 495], speed=0.1, rotation=[25, 45, 0], rotation_speed=0.1, move=True, print_position=True, 
-          forward_z='w', backward_z='s', left_x='a', right_x='d', up_y='q', down_y='e', 
-          rotate_up_x='up', rotate_down_x='down', rotate_left_y='left', rotate_right_y='right', 
-          roll_left_z='z', roll_right_z='x', boundaries=True, max_y=500, min_y=0, max_x=500, min_x=0, max_z=500, min_z=0)
+d3_camera(camera_pos=[-495,495,495], speed=0.1, rotation=[25, 45, 0], rotation_speed=0.1, move=False, print_position=False,
+              forward_z='w', backward_z='s', left_x='a', right_x='d', up_y='q', down_y='e', 
+              rotate_up_x='up', rotate_down_x='down', rotate_left_y='left', rotate_right_y='right',
+              roll_left_z='z', roll_right_z='x', 
+              boundaries=False, max_y=None, min_y=None, max_x=None, min_x=None, max_z=None, min_z=None,
+              rotate_x_max=None, rotate_x_min=None, rotate_y_max=None, rotate_y_min=None, rotate_z_max=None, rotate_z_min=None)
 ```
 
-### Parameters:  
+### Parameters
 
-- **camera_pos**: The initial position of the camera in 3D space as `[x, y, z]`.  
-- **speed**: The movement speed of the camera.  
-- **rotation**: The initial rotation angles `[pitch (X), yaw (Y), roll (Z)]`.  
-- **rotation_speed**: The speed at which the camera rotates.  
-- **move**: A boolean to enable or disable camera movement.  
-- **print_position**: If `True`, prints the camera's position and rotation.  
-- **forward_z**: The key to move the camera forward along the Z-axis (default: `'w'`).  
-- **backward_z**: The key to move the camera backward along the Z-axis (default: `'s'`).  
-- **left_x**: The key to move the camera left along the X-axis (default: `'a'`).  
-- **right_x**: The key to move the camera right along the X-axis (default: `'d'`).  
-- **up_y**: The key to move the camera up along the Y-axis (default: `'q'`).  
-- **down_y**: The key to move the camera down along the Y-axis (default: `'e'`).  
-- **rotate_up_x**: The key to rotate the camera upward (pitch decrease, default: `'up'`).  
-- **rotate_down_x**: The key to rotate the camera downward (pitch increase, default: `'down'`).  
-- **rotate_left_y**: The key to rotate the camera left (yaw decrease, default: `'left'`).  
-- **rotate_right_y**: The key to rotate the camera right (yaw increase, default: `'right'`).  
-- **roll_left_z**: The key to roll the camera left (default: `'z'`).  
-- **roll_right_z**: The key to roll the camera right (default: `'x'`).  
-- **boundaries**: If `True`, movement is restricted within the specified limits.  
-- **max_x, min_x**: The maximum and minimum limits for the X-axis movement.  
-- **max_y, min_y**: The maximum and minimum limits for the Y-axis movement.  
-- **max_z, min_z**: The maximum and minimum limits for the Z-axis movement.  
-- **rotate_x_max, rotate_x_min**: The maximum and minimum limits for pitch rotation (X-axis).  
-- **rotate_y_max, rotate_y_min**: The maximum and minimum limits for yaw rotation (Y-axis).  
-- **rotate_z_max, rotate_z_min**: The maximum and minimum limits for roll rotation (Z-axis).  
+- **camera_pos**: List `[x, y, z]`. The starting position of the camera in 3D space.
+- **speed**: Float. Speed at which the camera moves.
+- **rotation**: List `[pitch (X), yaw (Y), roll (Z)]`. Initial camera rotation in degrees.
+- **rotation_speed**: Float. Speed at which the camera rotates.
+- **move**: Bool. Enables (`True`) or disables (`False`) movement control.
+- **print_position**: Bool. If `True`, prints camera position and rotation on update.
+
+#### Movement Controls
+- **forward_z** / **backward_z**: Keys to move forward/backward along Z-axis (default: `'w'`, `'s'`).
+- **left_x** / **right_x**: Keys to move left/right along X-axis (default: `'a'`, `'d'`).
+- **up_y** / **down_y**: Keys to move up/down along Y-axis (default: `'q'`, `'e'`).
+
+#### Rotation Controls
+- **rotate_up_x** / **rotate_down_x**: Keys to pitch up/down (default: `'up'`, `'down'`).
+- **rotate_left_y** / **rotate_right_y**: Keys to yaw left/right (default: `'left'`, `'right'`).
+- **roll_left_z** / **roll_right_z**: Keys to roll camera (default: `'z'`, `'x'`).
+
+#### Boundaries and Limits
+- **boundaries**: Bool. If `True`, restricts camera within defined limits.
+- **max_x**, **min_x**: Float. Movement limits along X-axis.
+- **max_y**, **min_y**: Float. Movement limits along Y-axis.
+- **max_z**, **min_z**: Float. Movement limits along Z-axis.
+- **rotate_x_max**, **rotate_x_min**: Float. Rotation limits for pitch (X-axis).
+- **rotate_y_max**, **rotate_y_min**: Float. Rotation limits for yaw (Y-axis).
+- **rotate_z_max**, **rotate_z_min**: Float. Rotation limits for roll (Z-axis). 
 
 ---
 
